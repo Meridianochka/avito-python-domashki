@@ -1,27 +1,33 @@
-queries = [
-    "чехол",
-    "iphone",
-    "чехол",
-    "наушники",
-    "iphone",
-    "iphone",
-    "кабель",
-    "чехол",
-    "iphone",
-]
-
 from collections import Counter
 
-counts = Counter(queries)
 
-print(len(queries))
-print(counts)
-print(counts.most_common(1))
+def main():
+    queries = [
+        'чехол',
+        'iphone',
+        'чехол',
+        'наушники',
+        'iphone',
+        'iphone',
+        'кабель',
+        'чехол',
+        'iphone',
+    ]
 
-top_q, top_c = counts.most_common(1)[0] 
+    counts = Counter(queries)
 
-print(round(top_c / len(queries) * 100, 1))
+    top_query, top_count = counts.most_common(1)[0]
 
-one = [q for q, c in counts.items() if c ==1]
+    share = round(top_count / len(queries) * 100, 1)
 
-print(one)
+    once = [query for query, count in counts.items() if count == 1]
+
+    print('всего запросов:', len(queries))
+    print('сколько раз ввели каждый:', dict(counts))
+    print('самый частый запрос:', top_query)
+    print('его доля, %:', share)
+    print('ввели один раз:', once)
+
+
+if __name__ == '__main__':
+    main()
